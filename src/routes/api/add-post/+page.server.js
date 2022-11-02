@@ -1,5 +1,5 @@
 import { db } from '$lib/db';
-import { uid } from 'uid';
+import { uid } from 'uid/secure';
 
 export const actions = {
 	default: async ({ request }) => {
