@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"events": "^3.3.0",
-		"pouchdb": "^7.3.0"
+		"pouchdb": "^7.3.0",
+		"uid": "^2.0.1"
 	}
 }
