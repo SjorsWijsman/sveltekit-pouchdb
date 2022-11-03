@@ -1,9 +1,9 @@
-import { db } from '$lib/db';
+import { remoteDB } from '$lib/db';
 
 export async function load({ params }) {
 	const { id } = params;
 
 	return {
-		post: await db.get(id)
+		post: await remoteDB.get(id)
 	};
 }
