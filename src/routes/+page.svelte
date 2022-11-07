@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import AddPost from '$lib/components/AddPost.svelte';
 
-	export let data = null;
+	export let data;
 </script>
 
 <h1>Posts</h1>

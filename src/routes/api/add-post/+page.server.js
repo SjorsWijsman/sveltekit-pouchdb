@@ -1,4 +1,4 @@
-import { db } from '$lib/db';
+import { privateDB } from '$lib/private-db';
 import { uid } from 'uid/secure';
 
 export const actions = {
@@ -10,7 +10,7 @@ export const actions = {
 			_id: uid(16),
 			title
 		};
-		db.put(todo, (err, result) => {
+		privateDB.put(todo, (err, result) => {
 			console.log(result);
 			if (!err) return { success: true };
 		});

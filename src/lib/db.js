@@ -1,13 +1,15 @@
 import PouchDB from 'pouchdb';
-import { SECRET_COUCHDB_USERNAME, SECRET_COUCHDB_PASSWORD } from '$env/static/private';
-import { PUBLIC_COUCHDB_URL } from '$env/static/public';
+import {
+	PUBLIC_COUCHDB_USERNAME,
+	PUBLIC_COUCHDB_PASSWORD,
+	PUBLIC_COUCHDB_URL
+} from '$env/static/public';
 
-export const localDB = new PouchDB('my_db');
-
-export const remoteDB = new PouchDB(`${PUBLIC_COUCHDB_URL}/my_db`, {
+export const localDB = new PouchDB('db');
+export const publicDB = new PouchDB(`${PUBLIC_COUCHDB_URL}/db`, {
 	auth: {
-		username: SECRET_COUCHDB_USERNAME,
-		password: SECRET_COUCHDB_PASSWORD
+		username: PUBLIC_COUCHDB_USERNAME,
+		password: PUBLIC_COUCHDB_PASSWORD
 	},
-	skip_setup: true
+	skip_setup: false
 });
