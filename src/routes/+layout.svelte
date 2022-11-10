@@ -1,15 +1,17 @@
 <script>
-	import { localDB, publicDB } from '$lib/db';
+	import { localDB } from '$lib/db';
+	import { localData } from '$lib/store';
 
-	export let data = {};
+	// Data gets retrieved from server from publicDB
+	export let data;
 
-	// When publicDB changes
-	localDB
-		.sync(publicDB, {
-			live: true,
-			retry: true
-		})
-		.on('change', getPosts);
+	if (data) {
+		localDB.bulkDocs(
+			data.posts.rows.map((item) => item.doc),
+			{ new_edits: false } // not change revision
+			// (...args) => console.log('DONE', args)
+		);
+	}
 
 	// When localDB changes
 	localDB
@@ -22,8 +24,7 @@
 	// Get posts in localDB
 	function getPosts() {
 		localDB.allDocs({ include_docs: true, descending: true }, (err, doc) => {
-			data = {
-				...data,
+			$localData = {
 				posts: doc
 			};
 		});
@@ -32,4 +33,4 @@
 	getPosts();
 </script>
 
-<slot {data} />
+<slot />
