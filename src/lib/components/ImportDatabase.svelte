@@ -23,10 +23,10 @@
 </script>
 
 <button on:click={() => inputElement.click()}>Import DB</button>
-<input id="import-db" type="file" on:change={importDB} bind:this={inputElement} />
+<input type="file" on:change={importDB} bind:this={inputElement} />
 
 <style>
-	#import-db {
+	input {
 		display: none;
 	}
 </style>

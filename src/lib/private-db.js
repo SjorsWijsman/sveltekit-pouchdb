@@ -10,5 +10,5 @@ export const privateDB = new PouchDB(`${SECRET_COUCHDB_URL}/db`, {
 		username: SECRET_COUCHDB_USERNAME,
 		password: SECRET_COUCHDB_PASSWORD
 	},
-	skip_setup: false
+	skip_setup: true
 });

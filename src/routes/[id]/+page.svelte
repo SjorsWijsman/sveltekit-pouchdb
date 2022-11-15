@@ -1,7 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	import { localData } from '$lib/store';
+	import { localData, admin } from '$lib/store';
 	import Login from '$lib/components/Login.svelte';
+	import DeletePost from '$lib/components/DeletePost.svelte';
 
 	const id = $page.params.id;
 
@@ -23,11 +24,27 @@
 		<p>{post.doc.content}</p>
 	{/if}
 </main>
+{#if $admin}
+	<footer>
+		<div>
+			<DeletePost {post} />
+			<button>Edit Post</button>
+		</div>
+	</footer>
+{/if}
 
 <style>
 	nav {
-		width: 25rem;
+		width: 100%;
+		max-width: 25rem;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+	}
+
+	footer div {
+		display: flex;
+		justify-content: space-between;
+		width: var(--width-max);
 	}
 </style>
